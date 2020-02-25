@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace LAB_1
 {
@@ -25,6 +27,15 @@ namespace LAB_1
             return (countries, gradesMatrix);
         }
 
-
+        public (string, List<int>) ParseRow(string row)
+        {
+            string[] splittedRow = row.Split(",");
+            string countryName = splittedRow[0];
+            splittedRow = splittedRow.Where(val => val != countryName).ToArray();
+            int[] grades = Array.ConvertAll(splittedRow, s => int.Parse(s));
+            List<int> gradesList = new List<int>();
+            gradesList.AddRange(grades);
+            return (countryName, gradesList);
+        }
     }
 }
