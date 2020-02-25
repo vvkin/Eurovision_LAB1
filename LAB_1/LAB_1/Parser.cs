@@ -10,7 +10,6 @@ namespace LAB_1
         private readonly string dirName;
         public Parser(string dirName) => this.dirName = dirName;
 
-
         public (List<string>, List<List<int>>) GetInput()
         {
             string dirPath = "../../../" + dirName;
@@ -22,7 +21,15 @@ namespace LAB_1
             {
                 StreamReader cr = new StreamReader(fileName);
                 int countryNum = int.Parse(cr.ReadLine());
-                // Waiting for ParseRow function
+                for (int i = 0; i < countryNum; ++i)
+                {
+                    (string currentName, List<int> currentGrades) = ParseRow(cr.ReadLine());
+                    if (!countries.Contains(currentName))
+                    {
+                        countries.Add(currentName);
+                        gradesMatrix.Add(currentGrades);
+                    }
+                }
             }
             return (countries, gradesMatrix);
         }
