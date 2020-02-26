@@ -6,7 +6,8 @@ namespace LAB_1
     {
         static void Main(string[] args)
         {
-            
+            Worker newWorker = new Worker("tests");
+            newWorker.PrintWinnersList();
         }
     }
 }
