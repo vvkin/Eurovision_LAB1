@@ -23,5 +23,20 @@ namespace LAB_1
             }
             return results;
         }
+
+        private int GetIndexMaxInColumn(List<List<int>> matrix, int colIndex, List<int> used)
+        {
+            int max = -1;
+            int index = 0;
+            for (int i = 0; i < matrix.Count; ++i)
+            {
+                if (matrix[i][colIndex] > max && !used.Contains(i))
+                {
+                    max = matrix[i][colIndex];
+                    index = i;
+                }
+            }
+            return index;
+        }
     }
 }
