@@ -49,5 +49,22 @@ namespace LAB_1
             }
             return index;
         }
+        private void SortDictionary(ref Dictionary<string, int> dict)
+        {
+            dict = dict.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+        }
+
+
+        public void PrintWinnersList()
+        {
+            Dictionary<string, int> results = DoWork();
+            SortDictionary(ref results);
+
+            using StreamWriter wr = new StreamWriter("../../../output.txt");
+            foreach (var countryName in results.Keys)
+            {
+                wr.WriteLine($"{countryName} : {results[countryName]}");
+            }
+        }
     }
 }
