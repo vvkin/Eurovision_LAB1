@@ -21,6 +21,17 @@ namespace LAB_1
             {
                 results.Add(countryName, 0);
             }
+
+            for (int i = 0; i < gradesList.Count; ++i)
+            {
+                List<int> used = new List<int>();
+                for (int j = 0; j < upBound; ++j)
+                {
+                    int currentCountryInd = GetIndexMaxInColumn(gradesList, i, used);
+                    used.Add(currentCountryInd);
+                    results[countriesList[currentCountryInd]] += gradesForPlace[j];
+                }
+            }
             return results;
         }
 
