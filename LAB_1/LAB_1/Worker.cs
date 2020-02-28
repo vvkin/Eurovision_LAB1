@@ -60,7 +60,7 @@ namespace LAB_1
             Dictionary<string, int> results = DoWork();
             SortDictionary(ref results);
 
-            using StreamWriter wr = new StreamWriter("../../../output.txt");
+            using StreamWriter wr = new StreamWriter("../../../results.csv");
             foreach (var countryName in results.Keys)
             {
                 wr.WriteLine($"{countryName} : {results[countryName]}");
