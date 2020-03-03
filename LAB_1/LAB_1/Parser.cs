@@ -13,21 +13,25 @@ namespace LAB_1
         public (List<string>, List<List<int>>) GetInput()
         {
             string dirPath = "../../../" + dirName;
-            string[] filesList = Directory.GetFiles(dirPath);
             List<string> countries = new List<string>();
             List<List<int>> gradesMatrix = new List<List<int>>();
 
-            foreach (var fileName in filesList)
+            if (Directory.Exists(dirPath))
             {
-                StreamReader cr = new StreamReader(fileName);
-                int countryNum = int.Parse(cr.ReadLine());
-                for (int i = 0; i < countryNum; ++i)
+                string[] filesList = Directory.GetFiles(dirPath);
+
+                foreach (var fileName in filesList)
                 {
-                    (string currentName, List<int> currentGrades) = ParseRow(cr.ReadLine());
-                    if (!countries.Contains(currentName))
+                    StreamReader cr = new StreamReader(fileName);
+                    int countryNum = int.Parse(cr.ReadLine());
+                    for (int i = 0; i < countryNum; ++i)
                     {
-                        countries.Add(currentName);
-                        gradesMatrix.Add(currentGrades);
+                        (string currentName, List<int> currentGrades) = ParseRow(cr.ReadLine());
+                        if (!countries.Contains(currentName))
+                        {
+                            countries.Add(currentName);
+                            gradesMatrix.Add(currentGrades);
+                        }
                     }
                 }
             }

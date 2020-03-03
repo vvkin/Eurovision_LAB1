@@ -1,12 +1,11 @@
-﻿using System;
-
-namespace LAB_1
+﻿namespace LAB_1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Worker newWorker = new Worker("tests");
+            System.Console.WriteLine("Type the name of input directory");
+            Worker newWorker = new Worker(System.Console.ReadLine());
             newWorker.PrintWinnersList();
         }
     }

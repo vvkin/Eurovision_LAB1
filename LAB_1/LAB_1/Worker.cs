@@ -51,11 +51,11 @@ namespace LAB_1
             }
             return index;
         }
+
         private void SortDictionary(ref Dictionary<string, int> dict)
         {
             dict = dict.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
         }
-
 
         public void PrintWinnersList()
         {
