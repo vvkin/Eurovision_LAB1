@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System;
 
 namespace LAB_1
 {
@@ -39,6 +40,7 @@ namespace LAB_1
         {
             int max = -1;
             int index = 0;
+
             for (int i = 0; i < matrix.Count; ++i)
             {
                 if (matrix[i][colIndex] > max && !used.Contains(i))
@@ -59,8 +61,10 @@ namespace LAB_1
         {
             Dictionary<string, int> results = DoWork();
             SortDictionary(ref results);
+            results = results.Take(Math.Min(results.Count, 10)).ToDictionary(k => k.Key, k => k.Value);
 
             using StreamWriter wr = new StreamWriter("../../../results.csv");
+
             foreach (var countryName in results.Keys)
             {
                 wr.WriteLine($"{countryName} : {results[countryName]}");
